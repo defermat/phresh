@@ -53,9 +53,15 @@ def clean_photos(path, output_dir):
                                     if "DateTime" in key:
                                         flag2 = 1
                                         tdt = tags[key]
-                                        dt = datetime.datetime.strptime(str(tdt), "%Y:%m:%d %H:%M:%S")
+                                        try:
+                                            dt = datetime.datetime.strptime(str(tdt), "%Y:%m:%d %H:%M:%S")
+                                        except:
+                                            dt = datetime.datetime.strptime("1970:01:01 00:00:00", "%Y:%m:%d %H:%M:%S")
                                 if not flag2:
-                                    dt2 = datetime.datetime.strptime(time.ctime(os.path.getctime(fname)), "%a %b %d %H:%M:%S %Y")
+                                    try:
+                                        dt2 = datetime.datetime.strptime(time.ctime(os.path.getctime(fname)), "%a %b %d %H:%M:%S %Y")
+                                    except:
+                                        dt2 = datetime.datetime.strptime("1970:01:01 00:00:00", "%Y:%m:%d %H:%M:%S")
                                     no_date += 1
                             if dt:
                                 if not os.path.exists(output_dir+"/"+str(dt.year)):
