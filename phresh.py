@@ -26,7 +26,7 @@ def clean_photos(path, output_dir):
     for root, dirs, files in os.walk(path):
         path = root.split('/')
         for f in files:
-            if f != ".DS_Store":
+            if f != ".DS_Store" and "phresh_output" not in path:
                 flag = 0
                 for ext in exts:
                     if f.endswith(ext):
