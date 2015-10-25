@@ -90,7 +90,7 @@ def clean_photos(path, output_dir):
     print
     print "copied", no_date, "with no exif data"
     print "ignored", len(untouched_files), "non-photo files"
-    print "copied", num_photos, "photos"
+    print "found", num_photos, "photos"
     print "only", len(hashes), "photos were unique"
     print num_photos-len(hashes), "duplicates were not copied"
     print
